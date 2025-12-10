@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://errpdk5g0xla"]
+
+[ext_resource type="Script" uid="uid://b5u8u00qsro7y" path="res://pinball_machine/playfield.gd" id="1_4mvhu"]
+
+[node name="Playfield" type="Node2D"]
+script = ExtResource("1_4mvhu")
+
+[node name="Flippers" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Holes" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Bumpers" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Obstacles" type="Node2D" parent="."]
+unique_name_in_owner = true
