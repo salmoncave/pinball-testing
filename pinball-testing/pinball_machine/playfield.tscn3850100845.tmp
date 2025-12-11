@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://errpdk5g0xla"]
 
 [ext_resource type="Script" uid="uid://b5u8u00qsro7y" path="res://pinball_machine/playfield.gd" id="1_4mvhu"]
+[ext_resource type="PackedScene" uid="uid://i28clge8abrb" path="res://pinball_machine/flipper.tscn" id="2_10neq"]
 [ext_resource type="Texture2D" uid="uid://bxf0w054xljt" path="res://common/sprites/tilesets/roadTextures_tilesheet.png" id="3_tfrie"]
 [ext_resource type="PackedScene" uid="uid://dawnh71l765yf" path="res://pinball_machine/ball.tscn" id="4_1jj3f"]
-[ext_resource type="TileSet" uid="uid://d13vjs6ufc15f" path="res://pinball_machine/flippers/flippers_tileset.tres" id="4_ted8p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1jj3f"]
 texture = ExtResource("3_tfrie")
@@ -137,6 +137,23 @@ sources/2 = SubResource("TileSetAtlasSource_1jj3f")
 script = ExtResource("1_4mvhu")
 debug_pos_node = NodePath("Marker2D")
 
+[node name="Flippers" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Flipper" parent="Flippers" instance=ExtResource("2_10neq")]
+position = Vector2(-96, 0)
+
+[node name="Flipper3" parent="Flippers" instance=ExtResource("2_10neq")]
+position = Vector2(-96, 96)
+
+[node name="Flipper2" parent="Flippers" instance=ExtResource("2_10neq")]
+position = Vector2(96, 0)
+flipper_direction = 2
+
+[node name="Flipper4" parent="Flippers" instance=ExtResource("2_10neq")]
+position = Vector2(96, 96)
+flipper_direction = 2
+
 [node name="Holes" type="Node2D" parent="."]
 unique_name_in_owner = true
 
@@ -158,8 +175,3 @@ tile_set = SubResource("TileSet_ted8p")
 position = Vector2(-64, -300)
 
 [node name="Marker2D" type="Marker2D" parent="."]
-
-[node name="Flippers" type="TileMapLayer" parent="."]
-unique_name_in_owner = true
-tile_map_data = PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 1, 0, 255, 255, 254, 255, 0, 0, 0, 0, 0, 0, 1, 0)
-tile_set = ExtResource("4_ted8p")

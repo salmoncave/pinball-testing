@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5wj2ald545s5"]
+[gd_scene load_steps=3 format=3 uid="uid://b5wj2ald545s5"]
 
 [ext_resource type="Script" uid="uid://c4jpnrx2oo4s4" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://errpdk5g0xla" path="res://pinball_machine/playfield.tscn" id="2_0xm2m"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_ig7tw")
+
+[node name="Playfield" parent="." instance=ExtResource("2_0xm2m")]

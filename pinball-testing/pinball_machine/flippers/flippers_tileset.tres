@@ -1,0 +1,10 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://d13vjs6ufc15f"]
+
+[ext_resource type="PackedScene" uid="uid://i28clge8abrb" path="res://pinball_machine/flippers/flipper.tscn" id="1_r6q1b"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_u71oa"]
+scenes/1/scene = ExtResource("1_r6q1b")
+
+[resource]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetScenesCollectionSource_u71oa")

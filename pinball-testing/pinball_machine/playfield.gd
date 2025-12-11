@@ -11,35 +11,38 @@
 ##function properly.
 class_name Playfield extends Node2D
 
-@onready var flippers: Node2D = %Flippers
+signal flippers_activated(flipper_direction: Flipper.FlipperDirections)
+
+@onready var flippers: TileMapLayer = %Flippers
 @onready var holes: Node2D = %Holes
 @onready var bumpers: Node2D = %Bumpers
 @onready var obstacles: Node2D = %Obstacles
+@onready var balls: Node2D = %Balls
+
+@export var split_bumpers: bool = true
+@export var debug_pos_node: Node2D
+@export var ball_packed_scene: PackedScene
 
 var left_flippers: Array[Flipper]
 var right_flippers: Array[Flipper]
 
 func _ready() -> void:
-	set_flippers()
+	print(flippers.get_children())
+	#set_flippers()
 
 func _physics_process(_delta: float) -> void:
+	if Input.is_action_just_pressed("shoot_ball"):
+		_spawn_ball()
 	if Input.is_action_just_pressed("left_flippers"):
 		activate_flippers(Flipper.FlipperDirections.LEFT)
 	if Input.is_action_just_pressed("right_flippers"):
 		activate_flippers(Flipper.FlipperDirections.RIGHT)
 
 func activate_flippers(flipper_direction: Flipper.FlipperDirections) -> void:
-	var chosen_array: Array[Flipper] = []
-	
-	match flipper_direction:
-		Flipper.FlipperDirections.LEFT:
-			chosen_array = left_flippers
-		Flipper.FlipperDirections.RIGHT:
-			chosen_array = right_flippers
-	
-	if not chosen_array.is_empty():
-		for flipper in chosen_array:
-			flipper.activate_flipper()
+	if split_bumpers:
+		flippers_activated.emit(flipper_direction)
+	else:
+		flippers_activated.emit(Flipper.FlipperDirections.ALL)
 
 ##Sets up the flippers at the beginning of each level. Will likely need its own
 ##timing. Integral for setting reference for player input later.
@@ -48,9 +51,10 @@ func set_flippers() -> void:
 		return
 	for child in flippers.get_children():
 		if child is Flipper:
-			var flipper := child as Flipper
-			match flipper.flipper_direction:
-				Flipper.FlipperDirections.LEFT:
-					left_flippers.append(flipper)
-				Flipper.FlipperDirections.RIGHT:
-					right_flippers.append(flipper)
+			flippers_activated.connect(child.on_playfield_flippers_activated)
+
+func _spawn_ball() -> Ball:
+	var new_ball := ball_packed_scene.instantiate() as Ball
+	new_ball.global_position = debug_pos_node.global_position
+	balls.add_child(new_ball)
+	return new_ball
