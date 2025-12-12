@@ -4,11 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://c8tbalf3863uq" path="res://common/sprites/ball_32x32.png" id="1_yh3qu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_yh3qu"]
+friction = 0.1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_myi6c"]
+custom_solver_bias = 1.0
 radius = 16.0
 
 [node name="Ball" type="RigidBody2D"]
+mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_yh3qu")
 script = ExtResource("1_myi6c")
 

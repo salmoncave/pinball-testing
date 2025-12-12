@@ -135,9 +135,9 @@ texture_region_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_1jj3f")
 
-[node name="Playfield" type="Node2D" node_paths=PackedStringArray("debug_pos_nodes")]
+[node name="Playfield" type="Node2D" node_paths=PackedStringArray("debug_pos_node")]
 script = ExtResource("1_4mvhu")
-debug_pos_nodes = [NodePath("Marker2D"), NodePath("Marker2D4"), NodePath("Marker2D2"), NodePath("Marker2D3")]
+debug_pos_node = NodePath("Marker2D")
 ball_packed_scene = ExtResource("4_1jj3f")
 
 [node name="Holes" type="Node2D" parent="."]
@@ -158,16 +158,7 @@ unique_name_in_owner = true
 tile_set = SubResource("TileSet_ted8p")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(19, -291)
-
-[node name="Marker2D4" type="Marker2D" parent="."]
-position = Vector2(-25, -316)
-
-[node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(-52, -235)
-
-[node name="Marker2D3" type="Marker2D" parent="."]
-position = Vector2(48, -216)
+position = Vector2(0, -292)
 
 [node name="PlayfieldInputController" type="Node2D" parent="."]
 unique_name_in_owner = true
@@ -181,7 +172,3 @@ script = ExtResource("5_ted8p")
 
 [node name="Plunger" type="Node2D" parent="PlayfieldInputController"]
 unique_name_in_owner = true
-
-[connection signal="flipper_button_pressed" from="PlayfieldInputController" to="PlayfieldInputController/Flippers" method="_on_playfield_input_controller_flipper_button_pressed"]
-[connection signal="flipper_button_released" from="PlayfieldInputController" to="PlayfieldInputController/Flippers" method="_on_playfield_input_controller_flipper_button_released"]
-[connection signal="plunger_button_pressed" from="PlayfieldInputController" to="." method="_on_playfield_input_controller_plunger_button_pressed"]

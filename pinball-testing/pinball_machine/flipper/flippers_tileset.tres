@@ -1,0 +1,16 @@
+[gd_resource type="TileSet" load_steps=6 format=3 uid="uid://d13vjs6ufc15f"]
+
+[ext_resource type="PackedScene" uid="uid://bjy8q517snbea" path="res://pinball_machine/flipper/flipper_scenes/L_flipper_30.tscn" id="1_6foho"]
+[ext_resource type="PackedScene" uid="uid://bufig3l5egy0j" path="res://pinball_machine/flipper/flipper_scenes/L_flipper_45.tscn" id="2_e6swc"]
+[ext_resource type="PackedScene" uid="uid://c0n6tyiadgki8" path="res://pinball_machine/flipper/flipper_scenes/R_flipper_30.tscn" id="3_cv6ln"]
+[ext_resource type="PackedScene" uid="uid://jqrdyj8nxa75" path="res://pinball_machine/flipper/flipper_scenes/R_flipper_45.tscn" id="4_tjjrl"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_u71oa"]
+scenes/2/scene = ExtResource("1_6foho")
+scenes/3/scene = ExtResource("2_e6swc")
+scenes/4/scene = ExtResource("3_cv6ln")
+scenes/5/scene = ExtResource("4_tjjrl")
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetScenesCollectionSource_u71oa")

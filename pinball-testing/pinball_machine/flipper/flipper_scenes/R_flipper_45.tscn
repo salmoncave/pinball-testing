@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://jqrdyj8nxa75"]
+
+[ext_resource type="PackedScene" uid="uid://i28clge8abrb" path="res://pinball_machine/flipper/flipper.tscn" id="1_i4x1w"]
+
+[node name="Flipper" instance=ExtResource("1_i4x1w")]
+rotation = 2.3561945
+flipper_direction = 2
